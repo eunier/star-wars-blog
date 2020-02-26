@@ -2,7 +2,7 @@ import React from 'react';
 
 const Character = () => (
   <div class="container">
-    <div class="row d-flex flex-row flex-nowrap overflow-auto">
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
       <div className="card" style={{ minWidth: '18rem' }}>
         <img className="card-img-top" src="..." alt="Card image cap" />
         <div className="card-body">
