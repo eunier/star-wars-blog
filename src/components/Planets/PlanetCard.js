@@ -4,6 +4,7 @@ import PropsTypes from 'prop-types';
 const PlanetCard = props => (
   <div className="card mr-3" style={{ minWidth: '20rem' }}>
     <div className="card-img-top" style={styles.images} />
+
     <div className="card-body">
       <h5 className="card-title">{props.name}</h5>
 
