@@ -34,7 +34,16 @@ const Character = () => {
       <div className="row">
         <div className="d-flex flex-col flex-nowrap overflow-auto">
           {characters.map((character, idx) => (
-            <CharacterCard key={idx} character={character} />
+            <CharacterCard
+              key={idx}
+              name={character.name}
+              gender={character.gender}
+              hairColor={character.hairColor}
+              eyeColor={character.eyeColor}
+              height={character.height}
+              birthYear={character.birthYear}
+              skinColor={character.skinColor}
+            />
           ))}
         </div>
       </div>
