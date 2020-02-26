@@ -40,9 +40,6 @@ const Character = () => {
               gender={character.gender}
               hairColor={character.hairColor}
               eyeColor={character.eyeColor}
-              height={character.height}
-              birthYear={character.birthYear}
-              skinColor={character.skinColor}
             />
           ))}
         </div>
