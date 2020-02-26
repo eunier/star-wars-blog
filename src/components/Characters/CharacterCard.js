@@ -2,16 +2,19 @@ import React from 'react';
 import PropsTypes from 'prop-types';
 
 const CharacterCard = props => (
-  <div className="card" style={{ minWidth: '18rem' }}>
-    <img className="card-img-top" src="..." alt="Card image cap" />
+  <div className="card mr-3" style={{ minWidth: '20rem' }}>
+    <div className="card-img-top" style={styles.images} />
     <div className="card-body">
       <h5 className="card-title">{props.name}</h5>
-      <p className="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-      <a href="/#" className="btn btn-primary">
-        Go somewhere
+
+      <div className="card-text">
+        <p>Gender: {props.gender}</p>
+        <p>Hair Color: {props.hairColor}</p>
+        <p>Eye Color: {props.eyeColor}</p>
+      </div>
+
+      <a href="/" className="btn btn-outline-primary">
+        Learn More
       </a>
     </div>
   </div>
@@ -25,6 +28,14 @@ CharacterCard.propTypes = {
   height: PropsTypes.string,
   birthYear: PropsTypes.string,
   skinColor: PropsTypes.string
+};
+
+const styles = {
+  images: {
+    minHeight: '10rem',
+    minWidth: '20rem',
+    background: '#ccc'
+  }
 };
 
 export default CharacterCard;
