@@ -1,6 +1,7 @@
 import React from 'react';
 
 import starWarLogo from '../assets/star-war-logo.svg';
+
 const Navbar = () => (
   <>
     <nav className="navbar navbar-light bg-light">
