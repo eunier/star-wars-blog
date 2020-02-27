@@ -6,14 +6,14 @@ import Planets from '../components/Planets/Planets';
 
 const Home = () => {
   const [route] = useState('');
-  const [characters, setCharacter] = useState([]);
+  const [characters, setCharacters] = useState([]);
   const [planets, setPlanets] = useState([]);
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
       .then(res => res.json())
       .then(res =>
-        setCharacter(
+        setCharacters(
           res.results.map(character => ({
             name: character.name,
             gender: character.gender,
