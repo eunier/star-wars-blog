@@ -8,14 +8,16 @@ const Home = () => {
   const [route] = useState('');
   const [characters, setCharacters] = useState([]);
   const [planets, setPlanets] = useState([]);
-  const [favoritesList, setFavoritesList] = useState([]);
+  const [favoriteCharacterList, setFavoriteCharacterList] = useState([]);
+  const [favoritePlanetList, setFavoritePlanetList] = useState([]);
+  const [favoriteList, setFavoriteList] = useState([]);
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
       .then(res => res.json())
       .then(res =>
         setCharacters(
-          res.results.map(character => ({
+          res.results.map((character, idx) => ({
             name: character.name,
             gender: character.gender,
             hairColor: character.hair_color,
@@ -23,6 +25,7 @@ const Home = () => {
             height: character.height,
             birthYear: character.birth_year,
             skinColor: character.skin_color,
+            idx,
             isFavorite: false
           }))
         )
@@ -32,7 +35,7 @@ const Home = () => {
       .then(res => res.json())
       .then(res =>
         setPlanets(
-          res.results.map(planet => ({
+          res.results.map((planet, idx) => ({
             name: planet.name,
             terrain: planet.terrain,
             population: planet.population,
@@ -40,6 +43,7 @@ const Home = () => {
             orbitalPeriod: planet.orbital_period,
             diameter: planet.diameter,
             climate: planet.climate,
+            idx,
             isFavorite: false
           }))
         )
@@ -47,14 +51,26 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    setFavoritesList(() =>
-      [...characters, ...planets]
-        .filter(el => el.isFavorite)
-        .map(val => val.name)
+    setFavoriteCharacterList(() =>
+      characters
+        .filter(val => val.isFavorite)
+        .map(val => ({ name: val.name, type: 'character', idx: val.idx }))
     );
-  }, [characters, planets]);
+  }, [characters]);
 
-  const setCharacterFavorite = idx => {
+  useEffect(() => {
+    setFavoritePlanetList(() =>
+      planets
+        .filter(val => val.isFavorite)
+        .map(val => ({ name: val.name, type: 'planet', idx: val.idx }))
+    );
+  }, [planets]);
+
+  useEffect(() => {
+    setFavoriteList(() => [...favoriteCharacterList, ...favoritePlanetList]);
+  }, [favoriteCharacterList, favoritePlanetList]);
+
+  const toggleCharacterFavorite = idx => {
     setCharacters(prevCharacters =>
       prevCharacters.map((prevCharacterVal, prevCharacterIdx) => {
         if (prevCharacterIdx === idx) {
@@ -69,7 +85,7 @@ const Home = () => {
     );
   };
 
-  const setPlanetFavorite = idx => {
+  const togglePlanetFavorite = idx => {
     setPlanets(prevPlanets =>
       prevPlanets.map((prevPlanetVal, prevPlanetIdx) => {
         if (prevPlanetIdx === idx) {
@@ -88,9 +104,11 @@ const Home = () => {
     <>
       {!route ? (
         <>
-          <Navbar {...{ favoritesList }} />
-          <Characters {...{ characters, setCharacterFavorite }} />
-          <Planets {...{ planets, setPlanetFavorite }} />
+          <Navbar
+            {...{ favoriteList, toggleCharacterFavorite, togglePlanetFavorite }}
+          />
+          <Characters {...{ characters, toggleCharacterFavorite }} />
+          <Planets {...{ planets, togglePlanetFavorite }} />
         </>
       ) : null}
     </>

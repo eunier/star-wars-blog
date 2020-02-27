@@ -21,7 +21,7 @@ const PlanetCard = props => (
 
         <button
           className="btn btn-outline-warning"
-          onClick={() => props.setPlanetFavorite(props.idx)}
+          onClick={() => props.togglePlanetFavorite(props.idx)}
         >
           <img src={props.isFavorite ? heart : heartOutline} alt="like" />
         </button>
@@ -46,7 +46,7 @@ PlanetCard.propTypes = {
   population: PropTypes.string,
   terrain: PropTypes.string,
   isFavorite: PropTypes.bool.isRequired,
-  setPlanetFavorite: PropTypes.func.isRequired
+  togglePlanetFavorite: PropTypes.func.isRequired
 };
 
 export default PlanetCard;

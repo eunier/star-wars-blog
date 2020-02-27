@@ -22,7 +22,7 @@ const CharacterCard = props => (
 
         <button
           className="btn btn-outline-warning"
-          onClick={() => props.setCharacterFavorite(props.idx)}
+          onClick={() => props.toggleCharacterFavorite(props.idx)}
         >
           <img src={props.isFavorite ? heart : heartOutline} alt="like" />
         </button>
@@ -49,7 +49,7 @@ CharacterCard.propTypes = {
   hairColor: PropTypes.string,
   eyeColor: PropTypes.string,
   isFavorite: PropTypes.bool.isRequired,
-  setCharacterFavorite: PropTypes.func.isRequired
+  toggleCharacterFavorite: PropTypes.func.isRequired
 };
 
 export default CharacterCard;

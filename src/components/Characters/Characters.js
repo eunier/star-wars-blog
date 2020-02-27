@@ -16,13 +16,13 @@ const Characters = props => (
         {props.characters.map((character, idx) => (
           <CharacterCard
             key={idx}
+            idx={character.idx}
             name={character.name}
             gender={character.gender}
             hairColor={character.hairColor}
             eyeColor={character.eyeColor}
             isFavorite={character.isFavorite}
-            setCharacterFavorite={props.setCharacterFavorite}
-            {...{ idx }}
+            toggleCharacterFavorite={props.toggleCharacterFavorite}
           />
         ))}
       </div>
@@ -32,7 +32,7 @@ const Characters = props => (
 
 Characters.propTypes = {
   characters: PropTypes.arrayOf(PropTypes.object),
-  setCharacterFavorite: PropTypes.func.isRequired
+  toggleCharacterFavorite: PropTypes.func.isRequired
 };
 
 export default Characters;
