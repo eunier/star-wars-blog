@@ -8,7 +8,7 @@ const Home = () => {
   const [route] = useState('');
   const [characters, setCharacters] = useState([]);
   const [planets, setPlanets] = useState([]);
-  const [charactersFavoritesList, setCharactersFavoritesList] = useState([]);
+  const [favoritesList, setFavoritesList] = useState([]);
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
@@ -47,7 +47,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    setCharactersFavoritesList(() =>
+    setFavoritesList(() =>
       [...characters, ...planets]
         .filter(el => el.isFavorite)
         .map(val => val.name)
@@ -88,7 +88,7 @@ const Home = () => {
     <>
       {!route ? (
         <>
-          <Navbar />
+          <Navbar {...{ charactersFavoritesList: favoritesList }} />
           <Characters {...{ characters, setCharacterFavorite }} />
           <Planets {...{ planets, setPlanetFavorite }} />
         </>
