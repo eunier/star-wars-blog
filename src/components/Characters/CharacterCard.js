@@ -16,7 +16,7 @@ const CharacterCard = props => (
         <p>Eye Color: {props.eyeColor}</p>
       </div>
 
-      <div className=" d-flex justify-content-between">
+      <div className="d-flex justify-content-between">
         <button className="btn btn-outline-primary">Learn More</button>
 
         <button

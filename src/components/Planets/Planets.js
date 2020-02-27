@@ -20,6 +20,8 @@ const Planets = props => (
               name={planet.name}
               population={planet.population}
               terrain={planet.terrain}
+              setPlanetFavorite={props.setPlanetFavorite}
+              {...{ idx }}
             />
           ))}
         </div>
@@ -29,7 +31,8 @@ const Planets = props => (
 );
 
 Planets.propTypes = {
-  planets: PropTypes.arrayOf(PropTypes.object)
+  planets: PropTypes.arrayOf(PropTypes.object),
+  setPlanetFavorite: PropTypes.func.isRequired
 };
 
 export default Planets;

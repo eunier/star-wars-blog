@@ -1,5 +1,5 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import heartOutline from '../../assets/heart-outline.svg';
 
@@ -15,10 +15,13 @@ const PlanetCard = props => (
         <p>Gender: {props.terrain}</p>
       </div>
 
-      <div className=" d-flex justify-content-between">
+      <div className="d-flex justify-content-between">
         <button className="btn btn-outline-primary">Learn More</button>
 
-        <button className="btn btn-outline-warning">
+        <button
+          className="btn btn-outline-warning"
+          onClick={() => props.setPlanetFavorite(props.idx)}
+        >
           <img src={heartOutline} alt="like" />
         </button>
       </div>
@@ -38,9 +41,10 @@ const styles = {
 };
 
 PlanetCard.propTypes = {
-  name: PropsTypes.string,
-  population: PropsTypes.string,
-  terrain: PropsTypes.string
+  name: PropTypes.string,
+  population: PropTypes.string,
+  terrain: PropTypes.string,
+  setPlanetFavorite: PropTypes.func.isRequired
 };
 
 export default PlanetCard;
