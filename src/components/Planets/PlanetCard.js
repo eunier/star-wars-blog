@@ -12,8 +12,8 @@ const PlanetCard = props => (
       <h5 className="card-title">{props.name}</h5>
 
       <div className="card-text">
-        <p>Hair Color: {props.population}</p>
-        <p>Gender: {props.terrain}</p>
+        <p>Population: {props.population}</p>
+        <p>Terrain: {props.terrain}</p>
       </div>
 
       <div className="d-flex justify-content-between">
