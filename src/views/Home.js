@@ -88,7 +88,7 @@ const Home = () => {
     <>
       {!route ? (
         <>
-          <Navbar {...{ charactersFavoritesList: favoritesList }} />
+          <Navbar {...{ favoritesList }} />
           <Characters {...{ characters, setCharacterFavorite }} />
           <Planets {...{ planets, setPlanetFavorite }} />
         </>

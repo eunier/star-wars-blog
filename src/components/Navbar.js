@@ -25,8 +25,15 @@ const Navbar = props => (
           Favorites
         </button>
 
-        <div className="dropdown-menu dropdown-menu-right">
-          {props.charactersFavoritesList.map()}
+        <div className="dropdown-menu dropdown-menu-right p-0 b-0 m-0">
+          <ul className="list-group-item p-0 b-0 m-0">
+            {props.favoritesList.map((favoriteEl, idx) => (
+              <li className="list-group-item" id={idx}>
+                {favoriteEl}
+              </li>
+            ))}
+          </ul>
+
           {/* <a className="dropdown-item" href="#">
             Action
           </a>
@@ -47,7 +54,7 @@ const Navbar = props => (
 );
 
 Navbar.propTypes = {
-  charactersFavoritesList: PropTypes.arrayOf(PropTypes.string)
+  favoritesList: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Navbar;
