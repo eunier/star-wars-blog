@@ -6,6 +6,7 @@ import Planets from '../components/Planets/Planets';
 
 const Home = () => {
   const [characters, setCharacter] = useState([]);
+  const [planets, setPlanets] = useState([]);
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
@@ -23,13 +24,29 @@ const Home = () => {
           }))
         )
       );
+
+    fetch('https://swapi.co/api/planets')
+      .then(res => res.json())
+      .then(res =>
+        setPlanets(
+          res.results.map(planet => ({
+            name: planet.name,
+            terrain: planet.terrain,
+            population: planet.population,
+            rotationPeriod: planet.rotation_period,
+            orbitalPeriod: planet.orbital_period,
+            diameter: planet.diameter,
+            climate: planet.climate
+          }))
+        )
+      );
   });
 
   return (
     <>
       <Navbar />
-      <Characters characters={characters}/>
-      <Planets />
+      <Characters characters={characters} />
+      <Planets planets={planets} />
     </>
   );
 };
