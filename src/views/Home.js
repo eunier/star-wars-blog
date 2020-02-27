@@ -5,6 +5,7 @@ import Characters from '../components/Characters/Characters';
 import Planets from '../components/Planets/Planets';
 
 const Home = () => {
+  const [route] = useState('');
   const [characters, setCharacter] = useState([]);
   const [planets, setPlanets] = useState([]);
 
@@ -44,9 +45,13 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-      <Characters characters={characters} />
-      <Planets planets={planets} />
+      {route === '' ? (
+        <>
+          <Navbar />
+          <Characters characters={characters} />
+          <Planets planets={planets} />
+        </>
+      ) : null}
     </>
   );
 };
