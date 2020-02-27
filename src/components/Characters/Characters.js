@@ -20,6 +20,8 @@ const Characters = props => (
             gender={character.gender}
             hairColor={character.hairColor}
             eyeColor={character.eyeColor}
+            setCharacterFavorite={props.setCharacterFavorite}
+            {...{ idx }}
           />
         ))}
       </div>
@@ -28,7 +30,8 @@ const Characters = props => (
 );
 
 Characters.propTypes = {
-  characters: PropTypes.arrayOf(PropTypes.object)
+  characters: PropTypes.arrayOf(PropTypes.object),
+  setCharacterFavorite: PropTypes.func.isRequired
 };
 
 export default Characters;

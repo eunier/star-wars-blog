@@ -1,5 +1,5 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import heartOutline from '../../assets/heart-outline.svg';
 
@@ -19,7 +19,10 @@ const CharacterCard = props => (
       <div className=" d-flex justify-content-between">
         <button className="btn btn-outline-primary">Learn More</button>
 
-        <button className="btn btn-outline-warning">
+        <button
+          className="btn btn-outline-warning"
+          onClick={() => props.setCharacterFavorite(props.idx)}
+        >
           <img src={heartOutline} alt="like" />
         </button>
       </div>
@@ -39,10 +42,12 @@ const styles = {
 };
 
 CharacterCard.propTypes = {
-  name: PropsTypes.string,
-  gender: PropsTypes.string,
-  hairColor: PropsTypes.string,
-  eyeColor: PropsTypes.string
+  idx: PropTypes.number.isRequired,
+  name: PropTypes.string,
+  gender: PropTypes.string,
+  hairColor: PropTypes.string,
+  eyeColor: PropTypes.string,
+  setCharacterFavorite: PropTypes.func.isRequired
 };
 
 export default CharacterCard;

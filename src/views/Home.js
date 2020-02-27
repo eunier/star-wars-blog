@@ -8,6 +8,22 @@ const Home = () => {
   const [route] = useState('');
   const [characters, setCharacters] = useState([]);
   const [planets, setPlanets] = useState([]);
+  const [charactersFavoritesList, setCharactersFavoritesList] = useState([]);
+
+  const setCharacterFavorite = idx => {
+    setCharacters(prevCharacters =>
+      prevCharacters.map((prevCharacterVal, prevCharacterIdx) => {
+        if (prevCharacterIdx === idx) {
+          return {
+            ...prevCharacterVal,
+            isFavorite: !prevCharacterVal.isFavorite
+          };
+        } else {
+          return prevCharacterVal;
+        }
+      })
+    );
+  };
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
@@ -21,7 +37,8 @@ const Home = () => {
             eyeColor: character.eye_color,
             height: character.height,
             birthYear: character.birth_year,
-            skinColor: character.skin_color
+            skinColor: character.skin_color,
+            isFavorite: false
           }))
         )
       );
@@ -37,19 +54,28 @@ const Home = () => {
             rotationPeriod: planet.rotation_period,
             orbitalPeriod: planet.orbital_period,
             diameter: planet.diameter,
-            climate: planet.climate
+            climate: planet.climate,
+            isFavorite: false
           }))
         )
       );
   }, []);
+
+  useEffect(() => {
+    setCharactersFavoritesList(() =>
+      [...characters, ...planets]
+        .filter(el => el.isFavorite)
+        .map(val => val.name)
+    );
+  }, [characters, planets]);
 
   return (
     <>
       {!route ? (
         <>
           <Navbar />
-          <Characters characters={characters} />
-          <Planets planets={planets} />
+          <Characters {...{ characters, setCharacterFavorite }} />
+          <Planets {...{ planets }} />
         </>
       ) : null}
     </>
