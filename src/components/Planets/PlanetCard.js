@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import heart from '../../assets/heart.svg';
 import heartOutline from '../../assets/heart-outline.svg';
 
 const PlanetCard = props => (
@@ -22,7 +23,7 @@ const PlanetCard = props => (
           className="btn btn-outline-warning"
           onClick={() => props.setPlanetFavorite(props.idx)}
         >
-          <img src={heartOutline} alt="like" />
+          <img src={props.isFavorite ? heart : heartOutline} alt="like" />
         </button>
       </div>
     </div>
@@ -44,6 +45,7 @@ PlanetCard.propTypes = {
   name: PropTypes.string,
   population: PropTypes.string,
   terrain: PropTypes.string,
+  isFavorite: PropTypes.bool.isRequired,
   setPlanetFavorite: PropTypes.func.isRequired
 };
 

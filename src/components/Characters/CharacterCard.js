@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import heart from '../../assets/heart.svg';
 import heartOutline from '../../assets/heart-outline.svg';
 
 const CharacterCard = props => (
@@ -23,7 +24,7 @@ const CharacterCard = props => (
           className="btn btn-outline-warning"
           onClick={() => props.setCharacterFavorite(props.idx)}
         >
-          <img src={heartOutline} alt="like" />
+          <img src={props.isFavorite ? heart : heartOutline} alt="like" />
         </button>
       </div>
     </div>
@@ -47,6 +48,7 @@ CharacterCard.propTypes = {
   gender: PropTypes.string,
   hairColor: PropTypes.string,
   eyeColor: PropTypes.string,
+  isFavorite: PropTypes.bool.isRequired,
   setCharacterFavorite: PropTypes.func.isRequired
 };
 

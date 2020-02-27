@@ -20,6 +20,7 @@ const Planets = props => (
               name={planet.name}
               population={planet.population}
               terrain={planet.terrain}
+              isFavorite={planet.isFavorite}
               setPlanetFavorite={props.setPlanetFavorite}
               {...{ idx }}
             />

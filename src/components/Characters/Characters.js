@@ -20,6 +20,7 @@ const Characters = props => (
             gender={character.gender}
             hairColor={character.hairColor}
             eyeColor={character.eyeColor}
+            isFavorite={character.isFavorite}
             setCharacterFavorite={props.setCharacterFavorite}
             {...{ idx }}
           />
