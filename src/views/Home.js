@@ -10,6 +10,7 @@ const Home = () => {
   const [planets, setPlanets] = useState([]);
 
   useEffect(() => {
+    console.log('useefect')
     fetch('https://swapi.co/api/people')
       .then(res => res.json())
       .then(res =>
@@ -41,7 +42,7 @@ const Home = () => {
           }))
         )
       );
-  });
+  }, []);
 
   return (
     <>
