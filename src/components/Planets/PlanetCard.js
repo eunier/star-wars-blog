@@ -1,8 +1,10 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 
+import heartOutline from '../../assets/heart-outline.svg';
+
 const PlanetCard = props => (
-  <div className="card mr-3" style={{ minWidth: '20rem' }}>
+  <div className="card mr-3" style={styles.card}>
     <div className="card-img-top" style={styles.images} />
 
     <div className="card-body">
@@ -13,25 +15,32 @@ const PlanetCard = props => (
         <p>Gender: {props.terrain}</p>
       </div>
 
-      <a href="/" className="btn btn-outline-primary">
-        Learn More
-      </a>
+      <div className=" d-flex justify-content-between">
+        <button className="btn btn-outline-primary">Learn More</button>
+
+        <button className="btn btn-outline-warning">
+          <img src={heartOutline} alt="like" />
+        </button>
+      </div>
     </div>
   </div>
 );
 
-PlanetCard.propTypes = {
-  name: PropsTypes.string,
-  population: PropsTypes.string,
-  terrain: PropsTypes.string
-};
-
 const styles = {
+  card: {
+    minWidth: '20rem'
+  },
   images: {
     minHeight: '10rem',
     minWidth: '20rem',
     background: '#ccc'
   }
+};
+
+PlanetCard.propTypes = {
+  name: PropsTypes.string,
+  population: PropsTypes.string,
+  terrain: PropsTypes.string
 };
 
 export default PlanetCard;

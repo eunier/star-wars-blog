@@ -45,7 +45,7 @@ const Home = () => {
 
   return (
     <>
-      {route === '' ? (
+      {!route ? (
         <>
           <Navbar />
           <Characters characters={characters} />
