@@ -36,11 +36,11 @@ const CharacterCard = props => (
 
         <button
           className="btn btn-outline-warning"
-          onClick={() => props.toggleCharacterFavorite(props.idx)}
+          onClick={() => props.toggleCharacterFavorite(props.character.idx)}
         >
           <img
             src={props.character.isFavorite ? heart : heartOutline}
-            alt="like"
+            alt="add to favorites"
           />
         </button>
       </div>

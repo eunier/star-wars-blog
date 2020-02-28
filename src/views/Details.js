@@ -37,7 +37,7 @@ const Details = props => (
         <button
           className="btn btn-secondary mt-3"
           type="button"
-          onClick={() => props.setDetailsData()}
+          onClick={() => props.setDetailsData(null)}
         >
           {'<- Go Back'}
         </button>

@@ -11,7 +11,7 @@ const Home = () => {
   const [favoriteCharacterList, setFavoriteCharacterList] = useState([]);
   const [favoritePlanetList, setFavoritePlanetList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
-  const [detailsData, setDetailsData] = useState('');
+  const [detailsData, setDetailsData] = useState(null);
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
@@ -104,21 +104,26 @@ const Home = () => {
   return (
     <>
       <Navbar
-        {...{
-          favoriteList,
-          toggleCharacterFavorite,
-          togglePlanetFavorite
-        }}
+        favoriteList={favoriteList}
+        toggleCharacterFavorite={toggleCharacterFavorite}
+        togglePlanetFavorite={togglePlanetFavorite}
       />
       {!detailsData ? (
         <>
           <Characters
-            {...{ characters, toggleCharacterFavorite, setDetailsData }}
+            characters={characters}
+            toggleCharacterFavorite={toggleCharacterFavorite}
+            setDetailsData={setDetailsData}
           />
-          <Planets {...{ planets, togglePlanetFavorite }} />
+
+          <Planets
+            planets={planets}
+            togglePlanetFavorite={togglePlanetFavorite}
+            setDetailsData={setDetailsData}
+          />
         </>
       ) : (
-        <Details {...{ detailsData, setDetailsData }} />
+        <Details detailsData={detailsData} setDetailsData={setDetailsData} />
       )}
     </>
   );
