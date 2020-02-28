@@ -9,22 +9,39 @@ const CharacterCard = props => (
     <div className="card-img-top" style={styles.cardImageTop} />
 
     <div className="card-body">
-      <h5 className="card-title">{props.name}</h5>
+      <h5 className="card-title">{props.character.name}</h5>
 
       <div className="card-text">
-        <p>Gender: {props.gender}</p>
-        <p>Hair Color: {props.hairColor}</p>
-        <p>Eye Color: {props.eyeColor}</p>
+        <p>Gender: {props.character.gender}</p>
+        <p>Hair Color: {props.character.hairColor}</p>
+        <p>Eye Color: {props.character.eyeColor}</p>
       </div>
 
       <div className="d-flex justify-content-between">
-        <button className="btn btn-outline-primary">Learn More</button>
+        <button
+          className="btn btn-outline-primary"
+          onClick={() =>
+            props.setDetailsData(() => {
+              const newDetailsData = props.character;
+
+              delete newDetailsData.idx;
+              delete newDetailsData.isFavorite;
+
+              return newDetailsData;
+            })
+          }
+        >
+          Learn More
+        </button>
 
         <button
           className="btn btn-outline-warning"
-          onClick={() => props.toggleCharacterFavorite(props.idx)}
+          onClick={() => props.toggleCharacterFavorite(props.character.idx)}
         >
-          <img src={props.isFavorite ? heart : heartOutline} alt="like" />
+          <img
+            src={props.character.isFavorite ? heart : heartOutline}
+            alt="add to favorites"
+          />
         </button>
       </div>
     </div>
@@ -43,13 +60,9 @@ const styles = {
 };
 
 CharacterCard.propTypes = {
-  idx: PropTypes.number.isRequired,
-  name: PropTypes.string,
-  gender: PropTypes.string,
-  hairColor: PropTypes.string,
-  eyeColor: PropTypes.string,
-  isFavorite: PropTypes.bool.isRequired,
-  toggleCharacterFavorite: PropTypes.func.isRequired
+  character: PropTypes.object.isRequired,
+  toggleCharacterFavorite: PropTypes.func.isRequired,
+  setDetailsData: PropTypes.func.isRequired
 };
 
 export default CharacterCard;

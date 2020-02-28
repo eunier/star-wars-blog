@@ -3,14 +3,15 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Characters from '../components/Characters/Characters';
 import Planets from '../components/Planets/Planets';
+import Details from './Details';
 
 const Home = () => {
-  const [route] = useState('');
   const [characters, setCharacters] = useState([]);
   const [planets, setPlanets] = useState([]);
   const [favoriteCharacterList, setFavoriteCharacterList] = useState([]);
   const [favoritePlanetList, setFavoritePlanetList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [detailsData, setDetailsData] = useState(null);
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
@@ -29,7 +30,8 @@ const Home = () => {
             isFavorite: false
           }))
         )
-      );
+      )
+      .catch(err => console.log(`error: ${err}`));
 
     fetch('https://swapi.co/api/planets')
       .then(res => res.json())
@@ -47,7 +49,8 @@ const Home = () => {
             isFavorite: false
           }))
         )
-      );
+      )
+      .catch(err => console.log(`error: ${err}`));
   }, []);
 
   useEffect(() => {
@@ -102,15 +105,28 @@ const Home = () => {
 
   return (
     <>
-      {!route ? (
+      <Navbar
+        favoriteList={favoriteList}
+        toggleCharacterFavorite={toggleCharacterFavorite}
+        togglePlanetFavorite={togglePlanetFavorite}
+      />
+      {!detailsData ? (
         <>
-          <Navbar
-            {...{ favoriteList, toggleCharacterFavorite, togglePlanetFavorite }}
+          <Characters
+            characters={characters}
+            toggleCharacterFavorite={toggleCharacterFavorite}
+            setDetailsData={setDetailsData}
           />
-          <Characters {...{ characters, toggleCharacterFavorite }} />
-          <Planets {...{ planets, togglePlanetFavorite }} />
+
+          <Planets
+            planets={planets}
+            togglePlanetFavorite={togglePlanetFavorite}
+            setDetailsData={setDetailsData}
+          />
         </>
-      ) : null}
+      ) : (
+        <Details detailsData={detailsData} setDetailsData={setDetailsData} />
+      )}
     </>
   );
 };
