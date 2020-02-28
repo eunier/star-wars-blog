@@ -20,7 +20,16 @@ const CharacterCard = props => (
       <div className="d-flex justify-content-between">
         <button
           className="btn btn-outline-primary"
-          onClick={() => props.setDetailsData(props.character)}
+          onClick={() =>
+            props.setDetailsData(() => {
+              const newDetailsData = props.character;
+
+              delete newDetailsData.idx;
+              delete newDetailsData.isFavorite;
+
+              return newDetailsData;
+            })
+          }
         >
           Learn More
         </button>

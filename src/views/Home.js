@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Characters from '../components/Characters/Characters';
 import Planets from '../components/Planets/Planets';
+import Details from './Details';
 
 const Home = () => {
   const [characters, setCharacters] = useState([]);
@@ -117,7 +118,7 @@ const Home = () => {
           <Planets {...{ planets, togglePlanetFavorite }} />
         </>
       ) : (
-        <h1>detail here</h1>
+        <Details {...{ detailsData, setDetailsData }} />
       )}
     </>
   );
