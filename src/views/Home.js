@@ -5,12 +5,12 @@ import Characters from '../components/Characters/Characters';
 import Planets from '../components/Planets/Planets';
 
 const Home = () => {
-  const [route] = useState('');
   const [characters, setCharacters] = useState([]);
   const [planets, setPlanets] = useState([]);
   const [favoriteCharacterList, setFavoriteCharacterList] = useState([]);
   const [favoritePlanetList, setFavoritePlanetList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]);
+  const [detailsData, setDetailsData] = useState('');
 
   useEffect(() => {
     fetch('https://swapi.co/api/people')
@@ -102,15 +102,23 @@ const Home = () => {
 
   return (
     <>
-      {!route ? (
+      <Navbar
+        {...{
+          favoriteList,
+          toggleCharacterFavorite,
+          togglePlanetFavorite
+        }}
+      />
+      {!detailsData ? (
         <>
-          <Navbar
-            {...{ favoriteList, toggleCharacterFavorite, togglePlanetFavorite }}
+          <Characters
+            {...{ characters, toggleCharacterFavorite, setDetailsData }}
           />
-          <Characters {...{ characters, toggleCharacterFavorite }} />
           <Planets {...{ planets, togglePlanetFavorite }} />
         </>
-      ) : null}
+      ) : (
+        <h1>detail here</h1>
+      )}
     </>
   );
 };
