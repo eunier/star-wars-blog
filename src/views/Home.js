@@ -30,7 +30,8 @@ const Home = () => {
             isFavorite: false
           }))
         )
-      );
+      )
+      .catch(err => console.log(`error: ${err}`));
 
     fetch('https://swapi.co/api/planets')
       .then(res => res.json())
@@ -48,7 +49,8 @@ const Home = () => {
             isFavorite: false
           }))
         )
-      );
+      )
+      .catch(err => console.log(`error: ${err}`));
   }, []);
 
   useEffect(() => {
