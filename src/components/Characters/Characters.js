@@ -16,7 +16,7 @@ const Characters = props => (
         {props.characters.map((character, idx) => (
           <CharacterCard
             key={idx}
-            {...{ character }}
+            character={character}
             toggleCharacterFavorite={props.toggleCharacterFavorite}
             setDetailsData={props.setDetailsData}
           />

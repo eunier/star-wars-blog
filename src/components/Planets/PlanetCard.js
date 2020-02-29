@@ -9,21 +9,30 @@ const PlanetCard = props => (
     <div className="card-img-top" style={styles.images} />
 
     <div className="card-body">
-      <h5 className="card-title">{props.name}</h5>
+      <h5 className="card-title">{props.planet.name}</h5>
 
       <div className="card-text">
-        <p>Population: {props.population}</p>
-        <p>Terrain: {props.terrain}</p>
+        <p>Population: {props.planet.population}</p>
+        <p>Terrain: {props.planet.terrain}</p>
       </div>
 
       <div className="d-flex justify-content-between">
-        <button className="btn btn-outline-primary">Learn More</button>
+        <button className="btn btn-outline-primary" onClick={() => props.setDetailsData(() => {
+          const newDetailsData = props.planet
+
+          delete newDetailsData.idx;
+          delete newDetailsData.isFavorite;
+
+          return newDetailsData
+        })}>
+          Learn More
+        </button>
 
         <button
           className="btn btn-outline-warning"
-          onClick={() => props.togglePlanetFavorite(props.idx)}
+          onClick={() => props.togglePlanetFavorite(props.planet.idx)}
         >
-          <img src={props.isFavorite ? heart : heartOutline} alt="like" />
+          <img src={props.planet.isFavorite ? heart : heartOutline} alt="add to favorites" />
         </button>
       </div>
     </div>
@@ -42,11 +51,9 @@ const styles = {
 };
 
 PlanetCard.propTypes = {
-  name: PropTypes.string,
-  population: PropTypes.string,
-  terrain: PropTypes.string,
-  isFavorite: PropTypes.bool.isRequired,
-  togglePlanetFavorite: PropTypes.func.isRequired
+  planet: PropTypes.object.isRequired,
+  togglePlanetFavorite: PropTypes.func.isRequired,
+  setDetailsData: PropTypes.func.isRequired
 };
 
 export default PlanetCard;

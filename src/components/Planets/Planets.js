@@ -17,12 +17,9 @@ const Planets = props => (
           {props.planets.map((planet, idx) => (
             <PlanetCard
               key={idx}
-              idx={planet.idx}
-              name={planet.name}
-              population={planet.population}
-              terrain={planet.terrain}
-              isFavorite={planet.isFavorite}
+              planet={planet}
               togglePlanetFavorite={props.togglePlanetFavorite}
+              setDetailsData={props.setDetailsData}
             />
           ))}
         </div>
@@ -33,7 +30,8 @@ const Planets = props => (
 
 Planets.propTypes = {
   planets: PropTypes.arrayOf(PropTypes.object),
-  togglePlanetFavorite: PropTypes.func.isRequired
+  togglePlanetFavorite: PropTypes.func.isRequired,
+  setDetailsData: PropTypes.func.isRequired
 };
 
 export default Planets;
