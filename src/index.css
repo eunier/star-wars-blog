@@ -18,3 +18,8 @@ code {
 .cardDetail {
   margin: auto;
 }
+
+.containerDetail{
+  margin-top:135px ;
+  margin-bottom: 135px;
+}

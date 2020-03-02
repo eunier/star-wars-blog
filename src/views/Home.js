@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import Characters from '../components/Characters/Characters';
 import Planets from '../components/Planets/Planets';
 import Details from './Details';
@@ -127,6 +128,7 @@ const Home = () => {
       ) : (
         <Details detailsData={detailsData} setDetailsData={setDetailsData} />
       )}
+      <Footer/>
     </>
   );
 };

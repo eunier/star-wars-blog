@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Details = props => (
-  <div className="container">
+  <div className="container containerDetail">
     <div className="card mb-3 mt-4 cardDetail" style={styles.card}>
       <div className="row no-gutters">
         <div className="col" style={styles.cardImage}>
