@@ -5,8 +5,13 @@ import heart from '../../assets/heart.svg';
 import heartOutline from '../../assets/heart-outline.svg';
 
 const CharacterCard = props => (
-  <div className="card mr-3" style={styles.card}>
-    <div className="card-img-top" style={styles.cardImageTop} />
+  <div className="card mr-3 ml-3" style={styles.card}>
+    <div className="card-img-top" style={styles.cardImageTop}>
+      <img
+        src="https://media.timeout.com/images/103670273/320/210/image.jpg"
+        alt="character"
+      />
+    </div>
 
     <div className="card-body">
       <h5 className="card-title">{props.character.name}</h5>
@@ -31,7 +36,7 @@ const CharacterCard = props => (
             })
           }
         >
-          Learn More
+          Details
         </button>
 
         <button

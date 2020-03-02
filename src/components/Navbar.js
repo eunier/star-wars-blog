@@ -7,12 +7,12 @@ import starWarLogo from '../assets/star-war-logo.svg';
 
 const Navbar = props => (
   <>
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbar-light bg-warning">
       <img
         className="navbar-brand"
         src={starWarLogo}
-        width="40"
-        height="40"
+        width="120"
+        height="120"
         alt="star war logo"
       />
 

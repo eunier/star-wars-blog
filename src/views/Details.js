@@ -3,9 +3,16 @@ import PropTypes from 'prop-types';
 
 const Details = props => (
   <div className="container">
-    <div className="card mb-3" style={styles.card}>
+    <div className="card mb-3 mt-4 cardDetail" style={styles.card}>
       <div className="row no-gutters">
-        <div className="col" style={styles.cardImage} />
+        <div className="col" style={styles.cardImage}>
+        <img
+          className="img-fluid"
+          src="https://media.gettyimages.com/photos/american-actor-mark-hamill-on-the-set-of-star-wars-episode-iv-a-new-picture-id607402146?s=612x612"
+
+          alt="details"
+        />
+      </div>
         <div className="col">
           <div className="card-body">
             <h5 className="card-title">{props.detailsData.name}</h5>

@@ -5,8 +5,13 @@ import heart from '../../assets/heart.svg';
 import heartOutline from '../../assets/heart-outline.svg';
 
 const PlanetCard = props => (
-  <div className="card mr-3" style={styles.card}>
-    <div className="card-img-top" style={styles.images} />
+  <div className="card mr-3 ml-3" style={styles.card}>
+    <div className="card-img-top" style={styles.images}>
+      <img
+        src="https://media.timeout.com/images/103670273/320/210/image.jpg"
+        alt="planets"
+      />
+    </div>
 
     <div className="card-body">
       <h5 className="card-title">{props.planet.name}</h5>
@@ -17,22 +22,30 @@ const PlanetCard = props => (
       </div>
 
       <div className="d-flex justify-content-between">
-        <button className="btn btn-outline-primary" onClick={() => props.setDetailsData(() => {
-          const newDetailsData = props.planet
+        <button
+          className="btn btn-outline-primary"
+          onClick={() =>
+            props.setDetailsData(() => {
+              const newDetailsData = props.planet;
 
-          delete newDetailsData.idx;
-          delete newDetailsData.isFavorite;
+              delete newDetailsData.idx;
+              delete newDetailsData.isFavorite;
 
-          return newDetailsData
-        })}>
-          Learn More
+              return newDetailsData;
+            })
+          }
+        >
+          Details
         </button>
 
         <button
           className="btn btn-outline-warning"
           onClick={() => props.togglePlanetFavorite(props.planet.idx)}
         >
-          <img src={props.planet.isFavorite ? heart : heartOutline} alt="add to favorites" />
+          <img
+            src={props.planet.isFavorite ? heart : heartOutline}
+            alt="add to favorites"
+          />
         </button>
       </div>
     </div>

@@ -8,7 +8,7 @@ const Planets = props => (
     <div className="container">
       <div className="row">
         <div className="col">
-          <h3>Planets</h3>
+          <h3 className="text-white mt-3 mb-3">Planets</h3>
         </div>
       </div>
 
