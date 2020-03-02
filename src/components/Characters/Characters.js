@@ -7,7 +7,7 @@ const Characters = props => (
   <div className="container">
     <div className="row">
       <div className="col">
-        <h3>Characters</h3>
+        <h3 className="text-white mb-3 mt-3">Characters</h3>
       </div>
     </div>
 
